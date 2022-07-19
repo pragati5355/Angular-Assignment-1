@@ -1,0 +1,203 @@
+<!-- <form class="form-inline">
+    <div class="form-row">
+      <div class="col col-md-4 form-group">
+        <input type="text" class="form-control" placeholder="First name">
+      </div>
+      <div class="col col-md-4 form-group">
+        <input type="text" class="form-control" placeholder="Last name">
+      </div>
+    </div>
+</form> -->
+<!-- <div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="font-weight-bold text-center" style="font-style: oblique; color: rgb(65, 134, 123);;">
+                <h2>Add New Product</h2>
+            </div>
+
+           
+            <div class="text-center" style="margin-top: 20px; ">
+                <h4 class="card-subtitle mb-2">Form</h4>
+            </div>
+
+            <form #userdetails="ngForm">
+                <div class="form-row">
+                   
+                    <div class="col" style="margin-top: 1rem;">
+                        <label for="product-name">Product-Name : </label><br>
+                        <input 
+                        type="text" 
+                        id="product-name" 
+                        placeholder="Enter product name"
+                        required [(ngModel)]="product.product_name" 
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                    
+                    <div class="col" style="margin-top: 1rem;" >
+                        <label for="category">Category : </label><br>
+                        <select 
+                        id="category" 
+                        class="form-control-sm" 
+                        style="padding: 0px 60px 0px 60px;" 
+                        required [(ngModel)]="product.category" 
+                        [ngModelOptions]="{standalone: true}"> 
+
+                            <option selected>Choose</option>
+                            <option *ngFor="let category of categoryNames " >{{category}} </option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+ -->
+
+<!-- Add Product Form -->
+
+<div class="container-fluid formpage">
+    <div class="card cardoverflow" style="padding: 0px 40px 40px 40px">
+        <div class="card-body " style="padding: 20px 50px 20px 50px;">
+
+            <!-- Header-Text -->
+           
+            <div class="font-weight-bold" style="font-style: oblique; color: rgb(65, 134, 123);;">
+                <h2>Add New Product</h2>
+            </div>
+
+           
+            <div class="text-center" style="margin-top: 10px; ">
+                <h4 class="card-subtitle mb-2">Form</h4>
+            </div>
+
+
+            <!-- Form -->
+            <form #productdetaile="ngForm" >
+                    <!-- Product Name Input -->
+                    <div class="col" style="margin-top: 5px;">
+                        <label for="product-name">Product-Name : </label><br>
+                        <input 
+                        type="text" 
+                        id="product-name" 
+                        #productname = "ngModel"
+                        [pattern]= "validAlphanumeric"
+                        maxlength="30"
+                        placeholder="Enter product name"
+                        required [(ngModel)]="product.product_name" 
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div *ngIf="invalidname" role="alert" class="alert alert-danger">
+                        This Field is Required and Only Alphabets and Numbers allowed.
+                    </div>
+
+                    
+                   <!-- Product Category Input -->
+                    <div class="col" style="margin-top: 1rem;" >
+                        <label for="category">Category : </label><br>
+                        <select 
+                        id="category" 
+                        class="form-control-sm" 
+                        style="padding: 0px 60px 0px 60px;" 
+                        required [(ngModel)]="product.category" 
+                        [ngModelOptions]="{standalone: true}"> 
+                            <option selected>Choose</option>
+                            <option *ngFor="let category of categoryNames " >{{category}} </option>
+                        </select>
+                    </div>
+               
+
+                    <!-- Product Price Input -->
+                    <div style="margin-top: 1rem;">
+                        <label for="price">Price : </label><br>
+                        <input 
+                        type="text" 
+                        id="price" required 
+                        placeholder="Enter product price"
+                        [(ngModel)]="product.price"
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                    <!-- Product Serial Number Input -->
+                    <div style="margin-top: 1rem;" >
+                        <label for="serial_number">Serial Number : </label><br>
+                        <input 
+                        type="text" 
+                        id="serialno" required 
+                        pattern="[A-Za-z0-9]{0,30}"
+                        placeholder="Enter serial number"
+                        [(ngModel)]="product.serial_no"
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div *ngIf="invalidserial_no" role="alert" class="alert alert-danger">
+                        This Field is Required and Only Alphabets and Numbers allowed.
+                    </div> 
+
+                    <!-- Product Release Date Input -->
+                    <div style="margin-top: 1rem;">
+                        <label for="release_date">Release Date : </label><br>
+                        <input 
+                        type="date" 
+                        id="releasedate" required 
+                        style="padding: 0px 60px 0px 60px;" 
+                        max="{{maxDate | date:'yyyy-MM-dd'}}"
+                        placeholder="yyyy-mm-dd"
+                        [(ngModel)]="product.release_date"
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div *ngIf="invalidrelease_date" role="alert" class="alert alert-danger">
+                          Release date field is required.
+                      </div>
+
+                    <!-- Product Stock Unit Input -->
+                    <div style="margin-top: 1rem;">
+                        <label for="stock-unit">Stock Unit : </label><br>
+                        <input 
+                        type="text" 
+                        id="stockunit" required 
+                        placeholder="Enter stock units"
+                        [(ngModel)]="product.stock_units"
+                        [ngModelOptions]="{standalone: true}">
+                    </div>
+
+                    <!-- Product Description Input -->
+                    <div style="margin-top: 1rem;">
+                        <label for="description">Description : </label><br>
+                        <textarea 
+                        class="form-control" 
+                        id="description" 
+                        rows="2" required 
+                        placeholder="Enter description"
+                        [(ngModel)]="product.description"
+                        [ngModelOptions]="{standalone: true}"></textarea>
+                    </div> 
+
+                    <div *ngIf="invalid_description" role="alert" class="alert alert-danger">
+                        This field is required and need atleast 150 characters.
+                    </div>
+
+                    <!-- Add Button -->
+                    <div class="text-center " style="margin-top: 7px;">
+                        <button 
+                        type="button" 
+                        (click)="addNewProduct()" 
+                        class="btn text-white btn-rounded " 
+                        style="background-color: rgb(65, 134, 123); float: right;"
+                        >Add Product</button>
+                    </div>
+                        
+                    <!-- Back Button -->
+                    <div class="text-center" style="margin-top: 7px;">
+                        <button 
+                        type="button" 
+                        (click)="backProductLis()" 
+                        class="btn text-white btn-rounded " 
+                        style="background-color: rgb(65, 134, 123); float: left;"
+                        >Back</button>
+                    </div>
+                </form>
+        </div>
+
+    </div> 
+</div>

@@ -1,0 +1,8 @@
+.listpage{
+    height: 100vh;
+    justify-content: center;
+}
+
+.row:nth-child(even){
+    background-color: #f2f2f2;
+}

@@ -1,0 +1,24 @@
+{
+  "products": [
+    {
+      "product_name": "HP Pavilion Gaming Laptop",
+      "category": "laptop",
+      "price": "75,000",
+      "stock_units": "1",
+      "serial_no": "3HU765NHU",
+      "release_date": "2010-09-16",
+      "description": "Game harder for longer on a laptop equipped with a dual fan system for enhanced thermal cooling.",
+      "id": 1
+    },
+    {
+      "product_name": "FrontLoad Washing Machine",
+      "category": "Washing-Machine",
+      "price": "24,4999",
+      "stock_units": "10",
+      "serial_no": "23DEF34",
+      "release_date": "2019-02-05",
+      "description": "Apart from the location of the door, a front load machine has no agitator and uses paddles on the side of the drum.",
+      "id": 2
+    }
+  ]
+}
